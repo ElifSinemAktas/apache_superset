@@ -1,5 +1,7 @@
 ### APACHE SUPERSET : Run and explore
 
+.. IN PROGRESS ..
+
 #### Prerequisites
 - Create .env file and define your password and key here. 
   - Folder structure:
@@ -9,12 +11,14 @@
   ├── docker-compose.yaml
   └── superset
       └── Dockerfile
+  ...
   ```
   - .env file (You can create secret key using "openssl rand -base64 42" in LinuxOS)
   ```
   export POSTGRES_PASSWORD="YOUR_PASSWORD"
   export SUPERSET_SECRET_KEY="YOUR_SECRET_KEY"
   ```
+  - Create python venv and install [requirements.txt](./requirements.txt) (3.8.10 is used for this example)
 
 #### Set-up Superset
 - Up the containers
@@ -71,7 +75,6 @@ Login and take a look -- navigate to http://localhost:8088/login/ -- u/p: [admin
   ALTER DATABASE prod OWNER TO prod;
   GRANT USAGE, CREATE ON SCHEMA public TO prod;
   ```
-  
 
 - Change user and db, create tables
 
@@ -164,4 +167,8 @@ Login and take a look -- navigate to http://localhost:8088/login/ -- u/p: [admin
       saletime timestamp);
   ```
 
+#### Upload data to db
+- Activate the venv that you created 
+- Run Jupyterlab (Don't forget to change your file_path)
 - Load files to postgresql using explore_tickit.ipynb
+
