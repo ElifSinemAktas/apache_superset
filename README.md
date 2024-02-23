@@ -107,19 +107,23 @@ In this example I'll use my Windows OS, I have Docker Desktop and Python3.8 here
 
 ### Create DB connection
 
-![superset_ticket_db_conn_1.png](./images/superset_ticket_db_conn_1.png) 
-![superset_ticket_db_conn_2.png](./images/superset_ticket_db_conn_2.png)
-![superset_ticket_db_conn_3.png](./images/superset_ticket_db_conn_3.png)
-![superset_ticket_db_conn_4.png](./images/superset_ticket_db_conn_4.png)
-![superset_ticket_db_conn_5.png](./images/superset_ticket_db_conn_5.png)
+- Follow the steps below to create db connection
+
+  ![superset_ticket_db_conn_1.png](./images/superset_ticket_db_conn_1.png) 
+  ![superset_ticket_db_conn_2.png](./images/superset_ticket_db_conn_2.png)
+  ![superset_ticket_db_conn_3.png](./images/superset_ticket_db_conn_3.png)
+  ![superset_ticket_db_conn_4.png](./images/superset_ticket_db_conn_4.png)
+  ![superset_ticket_db_conn_5.png](./images/superset_ticket_db_conn_5.png)
 
 ### Create Datasets
+
 - Create datasets for all tables in postgresql following the steps below.
-![superset_ticket_datasets_1.png](./images/superset_ticket_datasets_1.png)
-![superset_ticket_datasets_2.png](./images/superset_ticket_datasets_2.png)
-![superset_ticket_datasets_3.png](./images/superset_ticket_datasets_3.png)
-![superset_ticket_datasets_4.png](./images/superset_ticket_datasets_4.png)
-![superset_ticket_datasets_5.png](./images/superset_ticket_datasets_5.png)
+
+  ![superset_ticket_datasets_1.png](./images/superset_ticket_datasets_1.png)
+  ![superset_ticket_datasets_2.png](./images/superset_ticket_datasets_2.png)
+  ![superset_ticket_datasets_3.png](./images/superset_ticket_datasets_3.png)
+  ![superset_ticket_datasets_4.png](./images/superset_ticket_datasets_4.png)
+  ![superset_ticket_datasets_5.png](./images/superset_ticket_datasets_5.png)
 
 **NOTE**:
 If you get error when creating users datasets, there may be another users dataset (if you loaded examples when setting up superset). 
@@ -127,28 +131,35 @@ Delete this dataset so that you can create new one.
 
 ### Create Dashboard
 
+- Click Dashboard, rename it and click create new chart
 ![superset_ticket_dash_1.png](./images/superset_ticket_dash_1.png)
-
-- Rename it and click create new chart
 ![superset_ticket_dash_2.png](./images/superset_ticket_dash_2.png)
 
 - Go to main page 
 
 ### Create Charts (without join)
 
-#### Desired output
-![superset_dashboard.png](./images/superset_dashboard.png)
+**NOTE**: No screenshots of repeating steps were taken.
+
+#### Desired output 
+
+- We will create the charts on the dashboard below
+
+  ![superset_dashboard.png](./images/superset_dashboard.png)
 
 #### Total Number of Tickets Sold
-![superset_ticket_dash_0-1.png](./images/superset_ticket_dash_0-1.png)
-![superset_ticket_dash_0-2.png](./images/superset_ticket_dash_0-2.png)
-![superset_ticket_dash_0-3.png](./images/superset_ticket_dash_0-3.png)
-![superset_ticket_dash_0-4.png](./images/superset_ticket_dash_0-4.png)
-![superset_ticket_dash_0-5.png](./images/superset_ticket_dash_0-5.png)
-![superset_ticket_dash_0-6.png](./images/superset_ticket_dash_0-6.png)
-- Click "CREATE CHART" then click "SAVE"
+- Create Big Number chart
 
-![superset_ticket_dash_0-7.png](./images/superset_ticket_dash_0-7.png)
+  ![superset_ticket_dash_0-1.png](./images/superset_ticket_dash_0-1.png)
+  ![superset_ticket_dash_0-2.png](./images/superset_ticket_dash_0-2.png)
+  ![superset_ticket_dash_0-3.png](./images/superset_ticket_dash_0-3.png)
+  ![superset_ticket_dash_0-4.png](./images/superset_ticket_dash_0-4.png)
+  ![superset_ticket_dash_0-5.png](./images/superset_ticket_dash_0-5.png)
+  ![superset_ticket_dash_0-6.png](./images/superset_ticket_dash_0-6.png)
+
+- Click "CREATE CHART", then name your chart and click "SAVE"
+
+  ![superset_ticket_dash_0-7.png](./images/superset_ticket_dash_0-7.png)
 
 #### Total Pricepaid
 
@@ -157,76 +168,81 @@ Delete this dataset so that you can create new one.
 
 #### Total Sales Per Month
 
-![superset_ticket_dash_11.png](./images/superset_ticket_dash_11.png)
+- Create line chart
 
-#### Total Sales Per Day and Total Sales Per Week 
+  ![superset_ticket_dash_11.png](./images/superset_ticket_dash_11.png)
 
-- Similar to chart we created previous step, you can change the
-"TIME GRAIN" and create these charts (I won't do that for now:))
 
 ### Create Charts (with join)
 
 #### Event Count By Category
- ```commandline
-select 
-    event.eventid,
-    event.catid,
-    event.venueid,
-    event.dateid,
-    event.starttime,
-    event.eventname,
-category.catname from event 
-left join category on event.catid=category.catid;
-```
-![superset_ticket_dash_3.png](./images/superset_ticket_dash_3.png)
-![superset_ticket_dash_4.png](./images/superset_ticket_dash_4.png)
-![superset_ticket_dash_5.png](./images/superset_ticket_dash_5.png)
-![superset_ticket_dash_6.png](./images/superset_ticket_dash_6.png)
-![superset_ticket_dash_7.png](./images/superset_ticket_dash_7.png)
 
-#### Total Pricepaid By Category (no screenshots of repeating steps were taken).
-```commandline
-select 
-    sales.saletime,
-    sales.pricepaid,
-    category.catname from sales
-left join event on sales.eventid=event.eventid 
-left join category on event.catid=category.catid;
-```
-![superset_ticket_dash_9.png](./images/superset_ticket_dash_9.png)
-![superset_ticket_dash_10.png](./images/superset_ticket_dash_10.png)
+- Create bar chart
+   ```commandline
+  select 
+      event.eventid,
+      event.catid,
+      event.venueid,
+      event.dateid,
+      event.starttime,
+      event.eventname,
+  category.catname from event 
+  left join category on event.catid=category.catid;
+  ```
+  ![superset_ticket_dash_3.png](./images/superset_ticket_dash_3.png)
+  ![superset_ticket_dash_4.png](./images/superset_ticket_dash_4.png)
+  ![superset_ticket_dash_5.png](./images/superset_ticket_dash_5.png)
+  ![superset_ticket_dash_6.png](./images/superset_ticket_dash_6.png)
+  ![superset_ticket_dash_7.png](./images/superset_ticket_dash_7.png)
+
+#### Total Pricepaid By Category 
+- Create pie chart
+  ```commandline
+  select 
+      sales.saletime,
+      sales.pricepaid,
+      category.catname from sales
+  left join event on sales.eventid=event.eventid 
+  left join category on event.catid=category.catid;
+  ```
+  ![superset_ticket_dash_9.png](./images/superset_ticket_dash_9.png)
+  ![superset_ticket_dash_10.png](./images/superset_ticket_dash_10.png)
 
 #### Total Sales Per Week By Category Name
 
-```commandline
-select 
-    date_trunc('week', sales.saletime::date) AS weekly,
-    sum(sales.pricepaid),category.catname 
-from sales
-left join event on sales.eventid=event.eventid 
-left join category on event.catid=category.catid
-group by weekly,category.catname
-order by weekly;
-```
-![superset_ticket_dash_12.png](./images/superset_ticket_dash_12.png)
+- Create line chart with dimension
+  ```commandline
+  select 
+      date_trunc('week', sales.saletime::date) AS weekly,
+      sum(sales.pricepaid),category.catname 
+  from sales
+  left join event on sales.eventid=event.eventid 
+  left join category on event.catid=category.catid
+  group by weekly,category.catname
+  order by weekly;
+  ```
+  ![superset_ticket_dash_12.png](./images/superset_ticket_dash_12.png)
 
 
 #### Sum Of Current Tickets and Sold Tickets
+- Create bar chart 
+  ```commandline
+  select 
+      sum(qtysold) as sold,
+      sum(numtickets) as numtickets,
+      event.eventid,
+      category.catid,
+      category.catname,
+      catgroup 
+  from listing
+  left join sales on sales.listid=listing.listid
+  left join event on sales.eventid=event.eventid
+  left join category on event.catid=category.catid
+  group by event.eventid,category.catid,category.catname,catgroup
+  order by event.eventid;
+  ```
+  ![superset_ticket_dash_13.png](./images/superset_ticket_dash_13.png)
 
-```commandline
-select 
-    sum(qtysold) as sold,
-    numtickets,
-    event.eventid,
-    category.catid,
-    category.catname,
-    catgroup 
-from sales
-left join listing on sales.listid=listing.listid
-left join event on sales.eventid=event.eventid
-left join category on event.catid=category.catid
-group by numtickets,event.eventid,category.catid,category.catname,catgroup
-order by event.eventid;
-```
+#### Set auto refresh
+- In our example our datasets doesn't change, but if you need to refresh table you set auto refresh.
 ![superset_ticket_dash_13.png](./images/superset_ticket_dash_13.png)
-
