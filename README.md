@@ -132,9 +132,41 @@ Delete this dataset so that you can create new one.
 - Rename it and click create new chart
 ![superset_ticket_dash_2.png](./images/superset_ticket_dash_2.png)
 
+- Go to main page 
 
-### Create Charts
-- Create bar chart for "Event Count By Category"
+### Create Charts (without join)
+
+#### Desired output
+![superset_dashboard.png](./images/superset_dashboard.png)
+
+#### Total Number of Tickets Sold
+![superset_ticket_dash_0-1.png](./images/superset_ticket_dash_0-1.png)
+![superset_ticket_dash_0-2.png](./images/superset_ticket_dash_0-2.png)
+![superset_ticket_dash_0-3.png](./images/superset_ticket_dash_0-3.png)
+![superset_ticket_dash_0-4.png](./images/superset_ticket_dash_0-4.png)
+![superset_ticket_dash_0-5.png](./images/superset_ticket_dash_0-5.png)
+![superset_ticket_dash_0-6.png](./images/superset_ticket_dash_0-6.png)
+- Click "CREATE CHART" then click "SAVE"
+
+![superset_ticket_dash_0-7.png](./images/superset_ticket_dash_0-7.png)
+
+#### Total Pricepaid
+
+- Similar to chart we created previous step, you will only choose 
+"pricepaid" column.
+
+#### Total Sales Per Month
+
+![superset_ticket_dash_11.png](./images/superset_ticket_dash_11.png)
+
+#### Total Sales Per Day and Total Sales Per Week 
+
+- Similar to chart we created previous step, you can change the
+"TIME GRAIN" and create these charts (I won't do that for now:))
+
+### Create Charts (with join)
+
+#### Event Count By Category
  ```commandline
 select 
     event.eventid,
@@ -151,9 +183,8 @@ left join category on event.catid=category.catid;
 ![superset_ticket_dash_5.png](./images/superset_ticket_dash_5.png)
 ![superset_ticket_dash_6.png](./images/superset_ticket_dash_6.png)
 ![superset_ticket_dash_7.png](./images/superset_ticket_dash_7.png)
-![superset_ticket_dash_8.png](./images/superset_ticket_dash_8.png)
 
-- Create pie chart for "Total Pricepaid By Category" (no screenshots of repeating steps were taken).
+#### Total Pricepaid By Category (no screenshots of repeating steps were taken).
 ```commandline
 select 
     sales.saletime,
@@ -165,42 +196,37 @@ left join category on event.catid=category.catid;
 ![superset_ticket_dash_9.png](./images/superset_ticket_dash_9.png)
 ![superset_ticket_dash_10.png](./images/superset_ticket_dash_10.png)
 
-- Create line chart for "Total Sales Per Month"
-
-![superset_ticket_dash_11.png](./images/superset_ticket_dash_11.png)
-
-- Create line chart for "Total Sales Per Day" and "Total Sales Per Week" only changing "time grain" in previous step.
-
-- Create line chart for "Total Sales Per Week By Category Name" 
+#### Total Sales Per Week By Category Name
 
 ```commandline
-    select 
-        date_trunc('week', sales.saletime::date) AS weekly,
-        sum(sales.pricepaid),category.catname 
-    from sales
-    left join event on sales.eventid=event.eventid 
-    left join category on event.catid=category.catid
-    group by weekly,category.catname
-    order by weekly;
+select 
+    date_trunc('week', sales.saletime::date) AS weekly,
+    sum(sales.pricepaid),category.catname 
+from sales
+left join event on sales.eventid=event.eventid 
+left join category on event.catid=category.catid
+group by weekly,category.catname
+order by weekly;
 ```
 ![superset_ticket_dash_12.png](./images/superset_ticket_dash_12.png)
 
 
-- Create bar chart for "Sum Of Current Tickets and Sold Tickets"
+#### Sum Of Current Tickets and Sold Tickets
 
 ```commandline
-    select 
-        sum(qtysold) as sold,
-        numtickets,
-        event.eventid,
-        category.catid,
-        category.catname,
-        catgroup 
-    from sales
-    left join listing on sales.listid=listing.listid
-    left join event on sales.eventid=event.eventid
-    left join category on event.catid=category.catid
-    group by numtickets,event.eventid,category.catid,category.catname,catgroup
-    order by event.eventid;
+select 
+    sum(qtysold) as sold,
+    numtickets,
+    event.eventid,
+    category.catid,
+    category.catname,
+    catgroup 
+from sales
+left join listing on sales.listid=listing.listid
+left join event on sales.eventid=event.eventid
+left join category on event.catid=category.catid
+group by numtickets,event.eventid,category.catid,category.catname,catgroup
+order by event.eventid;
 ```
 ![superset_ticket_dash_13.png](./images/superset_ticket_dash_13.png)
+
