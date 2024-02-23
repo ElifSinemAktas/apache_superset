@@ -1,8 +1,13 @@
-### APACHE SUPERSET : Run and explore
+### APACHE SUPERSET 
 
-.. IN PROGRESS ..
+Apache Superset is a modern, enterprise-ready business intelligence web application. It is fast, lightweight, intuitive,
+and loaded with options that make it easy for users of all skill sets to explore and visualize their data, from simple 
+pie charts to highly detailed deck.gl geospatial charts.
 
 #### Prerequisites
+
+In this example I'll use my Windows OS, I have Docker Desktop and Python3.8 here.
+
 - Create .env file and define your password and key here. 
   - Folder structure:
   ```
@@ -18,7 +23,17 @@
   export POSTGRES_PASSWORD="YOUR_PASSWORD"
   export SUPERSET_SECRET_KEY="YOUR_SECRET_KEY"
   ```
-  - Create python venv and install [requirements.txt](./requirements.txt) (3.8.10 is used for this example)
+  - Create python venv and install [requirements.txt](./requirements.txt) 
+
+  ```shell
+    python3 -m venv superset_venv
+  ```
+  ```shell
+     .\venv\Scripts\activate
+  ```
+  ```shell
+     pip install -r requirements.txt
+  ```
 
 #### Set-up Superset
 - Up the containers
@@ -56,7 +71,9 @@
     docker exec -it superset_demo superset init
     ```
 
-Login and take a look -- navigate to http://localhost:8088/login/ -- u/p: [admin/admin]
+- Login and take a look -- navigate to http://localhost:8088/login/ -- u/p: [admin/admin]
+
+#### Firs look at Superset 
 
 #### Set-up Postgresql db
 
@@ -75,100 +92,15 @@ Login and take a look -- navigate to http://localhost:8088/login/ -- u/p: [admin
   ALTER DATABASE prod OWNER TO prod;
   GRANT USAGE, CREATE ON SCHEMA public TO prod;
   ```
-
-- Change user and db, create tables
-
+- Exit from root user (ctrl+D) and connect prod database with prod user
   ```shell
   psql -U prod -d prod
   ```
-  
-  ```shell
-  create table users(
-      userid integer not null primary key,
-      username char(8),
-      firstname varchar(30),
-      lastname varchar(30),
-      city varchar(30),
-      state char(2),
-      email varchar(100),
-      phone char(14),
-      likesports boolean,
-      liketheatre boolean,
-      likeconcerts boolean,
-      likejazz boolean,
-      likeclassical boolean,
-      likeopera boolean,
-      likerock boolean,
-      likevegas boolean,
-      likebroadway boolean,
-      likemusicals boolean);
-  ```
-  
-  ```shell
-  create table venue(
-      venueid smallint not null primary key,
-      venuename varchar(100),
-      venuecity varchar(30),
-      venuestate char(2),
-      venueseats integer);
-  ```
-  
-  ```shell
-  create table category(
-      catid smallint not null primary key,
-      catgroup varchar(10),
-      catname varchar(10),
-      catdesc varchar(50));
-  ```
-  
-  ```shell
-  create table date(
-      dateid smallint not null primary key,
-      caldate date not null,
-      day character(3) not null,
-      week smallint not null,
-      month character(5) not null,
-      qtr character(5) not null,
-      year smallint not null,
-      holiday boolean default('N'));
-  ```
-  ```shell
-  create table event(
-      eventid integer not null primary key,
-      venueid smallint not null,
-      catid smallint not null,
-      dateid smallint not null,
-      eventname varchar(200),
-      starttime timestamp);
-  ```
-  ```shell
-  create table listing(
-      listid integer not null primary key,
-      sellerid integer not null,
-      eventid integer not null,
-      dateid smallint not null,
-      numtickets smallint not null,
-      priceperticket decimal(8,2),
-      totalprice decimal(8,2),
-      listtime timestamp);
-  ```
-  
-  ```shell
-  create table sales(
-      salesid integer not null primary key,
-      listid integer not null ,
-      sellerid integer not null,
-      buyerid integer not null,
-      eventid integer not null,
-      dateid smallint not null ,
-      qtysold smallint not null,
-      pricepaid decimal(8,2),
-      commission decimal(8,2),
-      saletime timestamp);
-  ```
+- Create tables using create_table.md
 
 #### Upload data to db
-- Activate the venv that you created 
-- Run Jupyterlab (Don't forget to change your file_path)
-- Load files to postgresql using explore_tickit.ipynb
-
+- Run Jupyterlab 
+  ```shell
+  jupyter lab --ip 0.0.0.0 --port 8888
+  ```
+- Load files to postgresql using explore_tickit.ipynb (Don't forget to change your file_path)
