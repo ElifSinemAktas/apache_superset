@@ -117,12 +117,14 @@ In this example I'll use my Windows OS, I have Docker Desktop and Python3.8 here
 
 ### Create Datasets
 
-- Create datasets for all tables in postgresql following the steps below.
+- Create datasets for "sales" table in postgresql following the steps below.
 
   ![superset_ticket_datasets_1.png](./images/superset_ticket_datasets_1.png)
   ![superset_ticket_datasets_2.png](./images/superset_ticket_datasets_2.png)
   ![superset_ticket_datasets_3.png](./images/superset_ticket_datasets_3.png)
   ![superset_ticket_datasets_4.png](./images/superset_ticket_datasets_4.png)
+
+- You can add more by clicking "Add a dataset". But for this example we won't add.
   ![superset_ticket_datasets_5.png](./images/superset_ticket_datasets_5.png)
 
 **NOTE**:
