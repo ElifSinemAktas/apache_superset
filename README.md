@@ -8,34 +8,26 @@ pie charts to highly detailed deck.gl geospatial charts.
 
 In this example I'll use my Windows OS, I have Docker Desktop and Python3.8 here.
 
+
+
+
+### Set-up 
+
 - Create .env file and define your password and key here. 
-  - Folder structure:
+  - Initial folder structure:
   ```
   ├── .env
   ├── README.md
   ├── docker-compose.yaml
   └── superset
       └── Dockerfile
-  ...
   ```
   - .env file (You can create secret key using "openssl rand -base64 42" in LinuxOS)
   ```
   export POSTGRES_PASSWORD="YOUR_PASSWORD"
   export SUPERSET_SECRET_KEY="YOUR_SECRET_KEY"
   ```
-  - Create python venv and install [requirements.txt](./requirements.txt) 
 
-  ```shell
-    python3 -m venv superset_venv
-  ```
-  ```shell
-     .\venv\Scripts\activate
-  ```
-  ```shell
-     pip install -r requirements.txt
-  ```
-
-### Set-up Superset
 - Up the containers
 
   ```shell
@@ -77,6 +69,18 @@ In this example I'll use my Windows OS, I have Docker Desktop and Python3.8 here
 
 ### Set-up Postgresql db
 
+- Create python venv and install [requirements.txt](./requirements.txt) 
+
+  ```shell
+    python3 -m venv superset_venv
+  ```
+  ```shell
+     .\venv\Scripts\activate
+  ```
+  ```shell
+     pip install -r requirements.txt
+  ```
+
 - Connect db as root and create a user
 
   ```shell
@@ -96,7 +100,7 @@ In this example I'll use my Windows OS, I have Docker Desktop and Python3.8 here
   ```shell
   psql -U prod -d prod
   ```
-- Create tables using create_table.md
+- Create tables using create_table.md (or you can define your schema in explore_ticket.ipynb file)
 
 ### Upload data to db
 - Run Jupyterlab 
