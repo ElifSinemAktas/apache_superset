@@ -66,14 +66,20 @@ You can follow with LinuxOS as well.
 
 ### Set-up Postgresql db
 
-- Create python venv and install [requirements.txt](./requirements.txt) 
+- Create python venv and install [requirements](./requirements.txt) 
 
   ```shell
     python3 -m venv superset_venv
   ```
+  - For Windows
   ```shell
      .\venv\Scripts\activate
   ```
+  - For Linux
+  ```shell
+     source superset_venv/bin/activate
+  ```
+  - Install requirements
   ```shell
      pip install -r requirements.txt
   ```
