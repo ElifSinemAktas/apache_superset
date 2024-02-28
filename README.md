@@ -257,6 +257,5 @@ Delete this dataset so that you can create new one.
 ![superset_ticket_dash_13.png](./images/superset_ticket_dash_13.png)
 
 #### Manage access to Dashboards
-https://superset.apache.org/docs/creating-charts-dashboards/creating-your-first-dashboard/#manage-access-to-dashboards
-
+- You can control which role will be able to see the dashboard. Take a look to [this page](https://superset.apache.org/docs/creating-charts-dashboards/creating-your-first-dashboard/#manage-access-to-dashboards).
 ![superset_manage_dashboars.png](images/superset_manage_dashboards.png)
