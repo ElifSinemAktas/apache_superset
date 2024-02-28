@@ -254,7 +254,7 @@ Delete this dataset so that you can create new one.
 
 #### Set auto refresh
 - In our example our datasets doesn't change, but if you need to refresh table you set auto refresh.
-![superset_ticket_dash_13.png](./images/superset_ticket_dash_13.png)
+![superset_ticket_autorefresh.png](./images/superset_ticket_autorefresh.png)
 
 #### Manage access to Dashboards
 - You can control which role will be able to see the dashboard. Take a look to [this page](https://superset.apache.org/docs/creating-charts-dashboards/creating-your-first-dashboard/#manage-access-to-dashboards).
