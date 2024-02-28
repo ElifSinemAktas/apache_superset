@@ -7,10 +7,7 @@ pie charts to highly detailed deck.gl geospatial charts.
 ### Prerequisites
 
 In this example I'll use my Windows OS, I have Docker Desktop and Python3.8 here.
-
-
-
-
+You can follow with LinuxOS as well. 
 ### Set-up 
 
 - Create .env file and define your password and key here. 
