@@ -8,6 +8,12 @@ pie charts to highly detailed deck.gl geospatial charts.
 
 In this example I'll use my Windows OS, I have Docker Desktop and Python3.8 here.
 You can follow with LinuxOS as well. 
+
+### Desired output 
+
+We will create the charts on the dashboard below
+
+  ![superset_dashboard.png](./images/superset_dashboard.png)
 ### Set-up 
 
 - Create .env file and define your password and key here. 
@@ -30,7 +36,7 @@ You can follow with LinuxOS as well.
   ```shell
     docker-compose up -d
   ```
-
+### Set-up Superset
 - Set up your local admin account
 
     ```shell
@@ -62,7 +68,7 @@ You can follow with LinuxOS as well.
 
 - Login and take a look -- navigate to http://localhost:8088/login/ -- u/p: [admin/admin]
 
-### Firs look at Superset 
+### First look at Superset 
 
 ### Set-up Postgresql db
 
@@ -150,11 +156,7 @@ Delete this dataset so that you can create new one.
 
 **NOTE**: No screenshots of repeating steps were taken.
 
-#### Desired output 
 
-- We will create the charts on the dashboard below
-
-  ![superset_dashboard.png](./images/superset_dashboard.png)
 
 #### Total Number of Tickets Sold
 - Create Big Number chart
