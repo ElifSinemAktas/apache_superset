@@ -66,10 +66,19 @@ We will create the charts on the dashboard below
     docker exec -it superset_demo superset init
     ```
 
-- Login and take a look -- navigate to http://localhost:8088/login/ -- u/p: [admin/admin]
-
 ### First look at Superset 
-
+- Login and take a look -- navigate to http://localhost:8088/login/ -- username/passwd: [admin/admin]
+![superset_1.png](images%2Fsuperset_1.png)
+- The tabs are quite clear:)
+![superset_2.png](images%2Fsuperset_2.png)
+  - Your Dashboards
+  - Your Charts
+  - Your Datasets
+  - SQL IDE to query data
+  - Security-related issues such as users and roles
+  - Database connections
+  - Dashboards that come ready with installation (optional)
+  - Charts that come ready with installation (optional)
 ### Set-up Postgresql db
 
 - Create python venv and install [requirements](./requirements.txt) 
